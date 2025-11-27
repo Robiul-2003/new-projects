@@ -1,0 +1,257 @@
+  <script>
+    /* SLIDER SCRIPT */
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+
+      for (i = 0; i < slides.length; i++) slides[i].style.display = "none";
+
+      slideIndex++;
+      if (slideIndex > slides.length) slideIndex = 1;
+
+      for (i = 0; i < dots.length; i++)
+        dots[i].className = dots[i].className.replace(" active", "");
+
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active";
+
+      setTimeout(showSlides, 2000);
+    }
+
+    /* MENU SCRIPT */
+    const toggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('mainMenu');
+
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle("show");
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+        menu.classList.remove("show");
+      }
+    });
+  </script>
+<script>
+function loadProducts() {
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+  const box = document.getElementById("productList");
+  box.innerHTML = "";
+
+  products.forEach(p => {
+    box.innerHTML += `
+      <div style="border:1px solid #ccc; border-radius:0px; ">
+        <img src="${p.image}" style="width:100%; height:120px; object-fit:cover; border-radius:8px;">
+        <h3 style="font-size:16px;">${p.name}</h3>
+        <p style="font-size:14px;">Price: ${p.price} Tk</p>
+      </div>
+    `;
+  });
+}
+
+loadProducts();
+
+function loadProducts() {
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+  const box = document.getElementById("productList");
+  box.innerHTML = "";
+
+  products.forEach(p => {
+    box.innerHTML += `
+      <div style="border:1px solid #ccc; border-radius:10px; padding:10px;">
+        <img src="${p.image}" style="width:100%; height:120px; object-fit:cover; border-radius:8px;">
+        <h3 style="font-size:16px;">${p.name}</h3>
+        <p style="font-size:14px;">Price: ${p.price} Tk</p>
+      </div>
+    `;
+  });
+}
+
+loadProducts();
+
+</script>
+<script>
+  const headerProfile = document.getElementById("headerProfile");
+  const savedImg = localStorage.getItem("profileImage");
+
+  if (savedImg) {
+    headerProfile.src = savedImg;
+  } else {
+    headerProfile.src = "default.png"; // default photo (optional)
+  }
+</script>
+<script>
+function loadProducts() {
+  const box = document.getElementById("productList");
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+  box.innerHTML = "";
+  products.forEach(p => {
+    box.innerHTML += `
+     <div style="
+  width:160px;
+  height:270px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  padding:10px;
+  cursor:pointer;">
+  
+  <img src="${p.image}" style="width:100%; height:150px; object-fit:cover; border-radius:8px;">
+  
+  <h3 style="font-size:16px;">${p.name}</h3>
+  <p style="font-size:14px;">Price: ${p.price} Tk</p>
+</div>
+
+    `;
+  });
+}
+
+// page load হলে home page-এ show করো
+loadProducts();
+</script>
+<script>
+function loadProducts() {
+  const box = document.getElementById("productList");
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+  box.innerHTML = "";
+
+  products.forEach((p, index) => {
+    box.innerHTML += `
+      <div style="border:1px solid #ccc; border-radius:10px; padding:10px; cursor:pointer;"
+           onclick="openProduct(${index})">
+        <img src="${p.image}" style="width:100%; height:120px; object-fit:cover; border-radius:8px;">
+        <h3 style="font-size:16px;">${p.name}</h3>
+        <p style="font-size:14px;">Price: ${p.price} Tk</p>
+      </div>
+    `;
+  });
+}
+
+function openProduct(index){
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+  let selectedProduct = products[index];
+  localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
+  window.location.href = "product-details.html"; // ডিটেইল পেজ
+}
+
+// হোম পেজ লোড হলে প্রোডাক্ট দেখাও
+loadProducts();
+</script>
+<script>
+function searchProduct() {
+  let text = document.getElementById("searchBox").value.toLowerCase();
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+  const box = document.getElementById("productList");
+
+  box.innerHTML = "";
+
+  products
+    .filter(p => p.name.toLowerCase().includes(text))   // search match
+    .forEach((p, index) => {
+      box.innerHTML += `
+        <div style="border:1px solid #ccc; border-radius:0px; padding:10px; cursor:pointer;"
+             onclick="openProduct(${index})">
+          <img src="${p.image}" style="width:100%; height:120px; object-fit:cover; border-radius:8px;">
+          <h3 style="font-size:16px;">${p.name}</h3>
+          <p style="font-size:14px;">Price: ${p.price} Tk</p>
+        </div>
+      `;
+    });
+}
+</script>
+<script>
+    /* SLIDER SCRIPT */
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+
+      for (i = 0; i < slides.length; i++) slides[i].style.display = "none";
+
+      slideIndex++;
+      if (slideIndex > slides.length) slideIndex = 1;
+
+      for (i = 0; i < dots.length; i++)
+        dots[i].className = dots[i].className.replace(" active", "");
+
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active";
+
+      setTimeout(showSlides, 2000);
+    }
+
+    /* MENU SCRIPT */
+    const toggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('mainMenu');
+
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle("show");
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+        menu.classList.remove("show");
+      }
+    });
+  </script>
+<!-- JS -->
+  
+
+<script>
+  const headerProfile = document.getElementById("headerProfile");
+  const savedImg = localStorage.getItem("profileImage");
+
+  if (savedImg) {
+    headerProfile.src = savedImg;
+  } else {
+    headerProfile.src = "default.png"; // default photo (optional)
+  }
+
+
+// page load হলে home page-এ show করো
+loadProducts();
+</script>
+<script>
+function loadProducts() {
+  const box = document.getElementById("productList");
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+  box.innerHTML = "";
+
+  products.forEach((p, index) => {
+    box.innerHTML += `
+       <div style="
+  width:174px;
+  height:280px;
+  border:1px solid #ccc;
+  border-radius:0px;
+  gap:10px;
+  cursor:pointer;">
+  
+  <img src="${p.image}" style="width:100%; height:200px; object-fit:cover; border-radius:px;">
+  
+  <h3 style="font-size:16px;">${p.name}</h3>
+  <p style="font-size:14px;">Price: ${p.price} Tk</p>
+</div>
+    `;
+  });
+}
+
+function openProduct(index){
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+  let selectedProduct = products[index];
+  localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
+  window.location.href = "product-details.html"; // ডিটেইল পেজ
+}
+
+// হোম পেজ লোড হলে প্রোডাক্ট দেখাও
+loadProducts();
+</script>
+
+
+

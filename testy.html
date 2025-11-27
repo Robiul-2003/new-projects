@@ -1,0 +1,276 @@
+<div id="productList" style="display:flex; flex-wrap: wrap; grid-template-columns: repeat(2, 1fr);gap:5px; margin: auto;"></div>
+
+// profile page-এ products show করার function
+function displayProducts() {
+  const box = document.getElementById("productList");
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+  box.innerHTML = "";
+  products.forEach(p => {
+    box.innerHTML += `
+      <div style="border:1px solid #ccc;padding:10px;">
+        <img src="${p.image}" style="width:100%; height:120px; object-fit:cover; border-radius:8px;">
+        <h3 style="font-size:16px;">${p.name}</h3>
+        <p style="font-size:14px;">Price: ${p.price} Tk</p>
+      </div>
+    `;
+  });
+}
+ <div style="border:1px solid #ccc; border-radius:10px; padding:10px;">
+        <img src="${p.image}" style="width:100%; height:120px; object-fit:cover; border-radius:8px;">
+        <h3 style="font-size:16px;">${p.name}</h3>
+        <p style="font-size:14px;">Price: ${p.price} Tk</p>
+      </div>
+      <script>
+    // ⭐ Review Count
+    const star = document.getElementById("star");
+    const countDisplay = document.getElementById("count");
+    let count = parseInt(localStorage.getItem("starCount")) || 0;
+    countDisplay.textContent = count;
+    star.addEventListener("click", () => {
+      count++;
+      localStorage.setItem("starCount", count);
+      countDisplay.textContent = count;
+    });
+
+    // 🌓 Dark Mode
+    const themeBtn = document.getElementById("themeBtn");
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark");
+      themeBtn.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+    }
+
+    themeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      if (document.body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+        themeBtn.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+      } else {
+        localStorage.setItem("theme", "light");
+        themeBtn.innerHTML = `<i class="fa-solid fa-moon"></i>`;
+      }
+    });
+
+    // 🖼️ Profile Image Upload
+    const upload = document.getElementById("upload");
+    const profileImg = document.getElementById("profileImg");
+    const savedImg = localStorage.getItem("profileImage");
+
+    if (savedImg) profileImg.src = savedImg;
+
+    upload.addEventListener("change", () => {
+      const file = upload.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          profileImg.src = reader.result;
+          localStorage.setItem("profileImage", reader.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+ <script>
+function saveProduct() {
+  const name = document.getElementById("pName").value;
+  const price = document.getElementById("pPrice").value;
+  const imageFile = document.getElementById("pImage").files[0];
+
+  if (!name || !price || !imageFile) {
+    alert("Please fill all fields!");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function () {
+    const product = {
+      name: name,
+      price: price,
+      image: reader.result
+    };
+
+    // পুরানো প্রোডাক্ট নাও
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    // নতুন যোগ করো
+    products.push(product);
+
+    // localStorage এ সেভ করো
+    localStorage.setItem("products", JSON.stringify(products));
+
+    alert("Product Added Successfully!");
+
+    // Clear
+    document.getElementById("pName").value = "";
+    document.getElementById("pPrice").value = "";
+    document.getElementById("pImage").value = "";
+  };
+
+  reader.readAsDataURL(imageFile);
+}
+
+
+
+
+function saveProduct() {
+  const name = document.getElementById("pName").value;
+  const price = document.getElementById("pPrice").value;
+  const imageFile = document.getElementById("pImage").files[0];
+
+  if (!name || !price || !imageFile) {
+    alert("Please fill all fields!");
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function () {
+    const product = {
+      name: name,
+      price: price,
+      image: reader.result
+    };
+
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    products.push(product);
+
+    localStorage.setItem("products", JSON.stringify(products));
+
+    alert("Product Added Successfully!");
+    
+    // Clear
+    document.getElementById("pName").value = "";
+    document.getElementById("pPrice").value = "";
+    document.getElementById("pImage").value = "";
+
+    // Optional: Home page এ নেবে
+    // window.location.href = "index.html";
+  };
+
+  reader.readAsDataURL(imageFile);
+}
+
+</script>
+<script>
+function saveProduct() {
+  const name = document.getElementById("pName").value;
+  const price = document.getElementById("pPrice").value;
+  const imageFile = document.getElementById("pImage").files[0];
+
+  if (!name || !price || !imageFile) {
+    alert("Please fill all fields!");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function () {
+    const product = {
+      name: name,
+      price: price,
+      image: reader.result
+    };
+
+    // localStorage থেকে products load করো
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    // নতুন product add করো
+    products.push(product);
+
+    // localStorage-এ save করো
+    localStorage.setItem("products", JSON.stringify(products));
+
+    alert("Product Added Successfully!");
+
+    // clear fields
+    document.getElementById("pName").value = "";
+    document.getElementById("pPrice").value = "";
+    document.getElementById("pImage").value = "";
+
+    // profile page-এও product show করতে চাইলে call করো
+    displayProducts();
+  };
+  reader.readAsDataURL(imageFile);
+}
+
+// profile page-এ products show করার function
+function displayProducts() {
+  const box = document.getElementById("productList");
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+  box.innerHTML = "";
+  products.forEach(p => {
+    box.innerHTML += `
+      <div style="
+  width:150px;
+  height:280px;
+  border:1px solid #ccc;
+  border-radius:0px;
+  gap:10px;
+  cursor:pointer;">
+  
+  <img src="${p.image}" style="width:100%; height:200px; object-fit:cover; border-radius:px;">
+  
+  <h3 style="font-size:16px;">${p.name}</h3>
+  <p style="font-size:14px;">Price: ${p.price} Tk</p>
+</div>
+
+    `;
+  });
+}
+
+// page load হলে profile page-এ product দেখাবে
+displayProducts();
+
+
+
+function displayProducts() {
+  const box = document.getElementById("productList");
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+  box.innerHTML = "";
+
+  products.forEach((p, index) => {
+    box.innerHTML += `
+      <div style="
+        width:200px;
+        height:300px;
+        border:1px solid #ccc;
+        border-radius:5px;
+        padding:5px;
+        position:relative;
+      ">
+
+        <img src="${p.image}" style="width:100%; height:200px; object-fit:cover; border-radius:5px;">
+
+        <h3 style="font-size:16px;">${p.name}</h3>
+        <p style="font-size:14px;">Price: ${p.price} Tk</p>
+
+        <button onclick="deleteProduct(${index})"
+          style="
+            width:100%;
+            padding:6px;
+            background:red;
+            color:white;
+            border:none;
+            border-radius:5px;
+            margin-top:5px;
+            cursor:pointer;
+          ">
+          Delete
+        </button>
+
+      </div>
+    `;
+  });
+}
+function deleteProduct(index) {
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+
+  // নির্দিষ্ট index এর প্রোডাক্ট মুছো
+  products.splice(index, 1);
+
+  // আবার localStorage এ save করো
+  localStorage.setItem("products", JSON.stringify(products));
+
+  // আবার লিস্ট রিফ্রেশ করো
+  displayProducts();
+}
+
+</script>

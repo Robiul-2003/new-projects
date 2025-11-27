@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile - Robiul Awal</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    crossorigin="anonymous"
+  />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+      padding: 20px;
+    }
+
+    :root {
+      --bg-color: #f9fafc;
+      --text-color: #333;
+      --card-bg: #fff;
+      --border-color: #ddd;
+    }
+
+    body.dark {
+      --bg-color: #1e1e1e;
+      --text-color: #f1f1f1;
+      --card-bg: #2c2c2c;
+      --border-color: #555;
+    }
+
+    .top-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .bt1-back, .dark-mode-toggle {
+      width: 45px;
+      height: 40px;
+      border-radius: 8px;
+      border: none;
+      background: var(--card-bg);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      font-size: 18px;
+      color: var(--text-color);
+    }
+
+    .bt1-back:hover, .dark-mode-toggle:hover {
+      background: #e8f0fe;
+      transform: scale(1.05);
+    }
+
+    .box1 {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .profile-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .img1 {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--border-color);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .upload-icon {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: var(--card-bg);
+      border-radius: 50%;
+      padding: 8px;
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+    }
+
+    h2 {
+      margin-top: 10px;
+      font-size: 24px;
+      color: var(--text-color);
+    }
+
+    .box2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .bt2-back {
+      font-size: 18px;
+      color: var(--text-color);
+      width: 100px;
+      height: 40px;
+      border: 2px solid var(--border-color);
+      text-align: center;
+      line-height: 40px;
+      border-radius: 6px;
+      background-color:green;
+    }
+
+    .fa-star {
+      color: gold;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    #count {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+
+    h5 {
+      font-size: 20px;
+      margin: 25px 0 10px;
+      color: var(--text-color);
+    }
+
+    .img2, .one {
+      width: 100%;
+      height:50%;
+      border-radius: 10px;
+      margin-top: 15px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 100px;
+      font-size: 16px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 10px;
+      resize: none;
+      display: none;
+      background: var(--card-bg);
+      color: var(--text-color);
+    }
+
+    .edit-btn {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .edit-btn:hover {
+      background: #0056b3;
+    }
+#productList {
+
+  
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  padding: 10px;
+}
+
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 20px;
+      }
+
+      .img1 {
+        width: 120px;
+        height: 120px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .bt1-back, .dark-mode-toggle {
+        width: 40px;
+        height: 36px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-buttons">
+    <a href="index.html"><button class="bt1-back"><i class="fa-solid fa-left-long"></i></button></a>
+    <button class="dark-mode-toggle" id="themeBtn"><i class="fa-solid fa-moon"></i></button>
+  </div>
+
+  <div class="box1">
+    <div class="profile-container">
+      <img src="Robiuls.jpg" alt="Profile" class="img1" id="profileImg" />
+      <label class="upload-icon" for="upload"><i class="fa-solid fa-camera"></i></label>
+      <input type="file" id="upload" accept="image/*" hidden />
+    </div>
+    <h2>Robiul Awal</h2>
+  </div>
+
+  <div class="box2">
+    <a href="https://wa.me/8801614153820" target="_blank"><button class="bt2-back">Contact</button></a>
+    <i class="fa-solid fa-star" id="star"></i>
+    <span id="count">0</span>
+  </div>
+<div class="addproduct" style="width:250px; height:auto; border:1px solid #ccc; border-radius:10px; padding:10px; margin:auto;">
+  <h1 style="text-align:center; margin-top:10px; font-size:20px;">Add Product</h1>
+
+  <input type="text" id="pName" placeholder="Product Name And Title" style="width:100%; padding:10px; margin-top:15px; margin-bottom:10px; border-radius:10px;">
+
+  <input type="number" id="pPrice" placeholder="Price"style="width:100%; padding:10px; margin-bottom:10px; border-radius:10px;">
+
+  <input type="file" id="pImage" accept="image/*"style="width:100%; margin-bottom:15px;">
+
+  <button class="edit-btn" onclick="saveProduct()" 
+    style="width:100%;">Save Product</button>
+</div>
+</div>   <!-- Add product box ends here -->
+
+<h2 style="margin-top:20px; text-align:center;">Your Products</h2>
+<div id="productList"></div>
+<script>
+function saveProduct() {
+  const name = document.getElementById("pName").value;
+  const price = document.getElementById("pPrice").value;
+  const imageFile = document.getElementById("pImage").files[0];
+
+  if (!name || !price || !imageFile) {
+    alert("Please fill all fields!");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function () {
+
+    const product = {
+      name: name,
+      price: price,
+      image: reader.result
+    };
+
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    products.push(product);
+
+    localStorage.setItem("products", JSON.stringify(products));
+
+    alert("Product Added Successfully!");
+
+    document.getElementById("pName").value = "";
+    document.getElementById("pPrice").value = "";
+    document.getElementById("pImage").value = "";
+
+    displayProducts();
+  };
+
+  reader.readAsDataURL(imageFile);
+}
+
+
+// Show Products
+function displayProducts() {
+  const box = document.getElementById("productList");
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+  box.innerHTML = "";
+
+  products.forEach((p, index) => {
+    box.innerHTML += `
+      <div style="
+        width:180px;
+        height:auto;
+        border:1px solid #ccc;
+        border-radius:5px;
+        padding:5px;
+        margin:auto;
+      ">
+
+        <img src="${p.image}" style="width:100%; height:180px; object-fit:cover; border-radius:5px;">
+
+        <h3 style="font-size:16px;">${p.name}</h3>
+        <p style="font-size:14px;">Price: ${p.price} Tk</p>
+
+        <button onclick="deleteProduct(${index})"
+          style="
+            width:100%;
+            padding:6px;
+            background:red;
+            color:white;
+            border:none;
+            border-radius:5px;
+            margin-top:5px;
+            cursor:pointer;
+          ">
+          Delete
+        </button>
+
+      </div>
+    `;
+  });
+}
+
+
+function deleteProduct(index) {
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+
+  products.splice(index, 1);
+
+  localStorage.setItem("products", JSON.stringify(products));
+
+  displayProducts();
+}
+
+// Load products on page start
+displayProducts();
+</script>
+
+
+  
+</body>
+</html>
