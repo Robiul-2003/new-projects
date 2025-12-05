@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
-  <!-- Font Awesome -->
+ 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
   <style>
     * {box-sizing: border-box;}
-    body {font-family: Verdana, sans-serif; margin: 0; padding: 0;background-color: #e7dede; }
+    body {font-family: Verdana, sans-serif; margin: 0; padding: 0;background-color: #fff; }
 
     /* HEADER */
     .header {
@@ -137,6 +137,7 @@
   border: 2px solid #fff;
   margin-left:50%;
   cursor: pointer;
+ 
   
 }
 .one{
@@ -144,41 +145,143 @@
   height:300px;
   border:1px solid red;
 }
+     a{
+  text-decoration: none;
+  color:black;
+}
+#productList{
+margin: auto;
+ display:flex;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(2, 1fr);gap:5px; border:px solid red; width:98%;
+}
 
+@media (min-width: 1024px) {
 
- @media (min-width: 356px) and (max-width: 468px){
-      .header-profile {
-  width: 30px;
-  height: 30px;
-  border-radius:50%;
-  object-fit: cover;
-  border: 2px solid #fff;
-  margin-left:20%;
-  cursor: pointer;
+  .header {
+      height:80px;
+      padding:20px 40px;
+  }
+
+  .header input {
+      width:40%;
+      height:45px;
+      font-size:18px;
+  }
+
+  .icon-btn {
+      width:55px;
+      height:45px;
+  }
+
+  .slideshow-container {
+      max-width:1200px;
+      height:450px;
+  }
+
+  .sliderimg {
+      height:450px;
+  }
+
+  #productList {
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:20px;
+      width:90%;
+  }
+
+  #productList div {
+      height:300px;
+  }
+}
+@media (max-width: 480px) {
   
+  .header {
+      height:60px;
+      padding:10px;
+      justify-content: space-between;
+  }
+
+  .header input {
+      width:55%;
+      height:34px;
+      font-size:14px;
+  }
+
+  .header-profile {
+      width:30px;
+      height:30px;
+      margin-left:0px;
+  }
+
+  .icon-btn {
+      width:40px;
+      height:35px;
+  }
+
+  .menu {
+      width:70%;
+      height:100vh;
+      top:60px;
+  }
+
+  .slideshow-container {
+      height:180px;
+  }
+
+  .sliderimg {
+      height:180px;
+  }
+
+  #productList {
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:5px;
+      width:98%;
+  }
+
+  #productList div {
+      width:100%;
+      height:250px;
+  }
 }
-.slideshow-container {
-  top:50px;
-      max-width: 1000px;
-      height:200px;
-      position: relative;
-      margin: auto;
-     border:1px solid green;
-    }
-   .sliderimg {
-  width: 100%;
-  height:200px;
-  object-fit: cover; 
+@media (min-width: 480px) and (max-width: 991px) {
+  
+  .header {
+      height:70px;
+      padding:15px;
+  }
+
+  .header input {
+      width:50%;
+      height:38px;
+      font-size:15px;
+  }
+
+  .slideshow-container {
+      max-width:900px;
+      height:300px;
+  }
+
+  .sliderimg {
+      height:300px;
+  }
+
+ /* #productList {
+      display:grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap:10px;
+      width:95%;
+  }*/
+   #productList{
+    display: flex; flex-wrap: wrap;
+   }
+
+  #productList div {
+      height:260px;
+  }
 }
-.header input {
-      width:60%;
-      height: 38px;
-      border:1px solid #ccc;
-      border-radius: 5px;
-      
-      
-    }
-    }
+
   </style>
 </head>
 <body>
@@ -195,7 +298,7 @@
 
       <nav id="mainMenu" class="menu">
         <a href="index.html"><div class="soman1" style="display:flex; justify-content: center;"><p class="names" style=""><span style="color:#b32424;">A</span>wal</p> </div></a>
-       <a href="profile.html"><div class="soman" style="display: flex;"><i class="fa-solid fa-user"></i>  Account<img id="headerProfile" class="header-profile"></div></a>
+       <a href="testy.html"><div class="soman" style="display: flex;"><i class="fa-solid fa-user"></i>  Account<img id="headerProfile" class="header-profile"></div></a>
        <a href="https://wa.me/8801319992654" target="_blank"><i class="fa-brands fa-whatsapp"></i> Message</a>
         <a href="#"><i class="fa-solid fa-video"></i> Video</a>
         <a href="login.html"><i class="fa-solid fa-user"></i> Sing in</a>
@@ -240,22 +343,9 @@
 <br><br>
   <!-- PRODUCTS -->
    
-<div id="productList" style="margin: auto; display:flex; flex-wrap: wrap; grid-template-columns: repeat(2, 1fr);gap:5px;"></div>
+<a href="Updated product-details.html"><div id="productList"></div></a>
 
-  
   <script>
-// ========= PROFILE PHOTO LOAD =========
-const headerProfile = document.getElementById("headerProfile");
-const savedImg = localStorage.getItem("profileImage");
-
-if (savedImg) {
-  headerProfile.src = savedImg;
-} else {
-  headerProfile.src = "default.png";
-}
-
-
-
 // ========= MENU TOGGLE =========
 const menuToggle = document.getElementById("menuToggle");
 const mainMenu = document.getElementById("mainMenu");
@@ -292,78 +382,60 @@ function showSlides() {
 }
 
 
-
-// ========= LOAD PRODUCTS =========
+//===load product ====
 function loadProducts() {
-  const box = document.getElementById("productList");
-  let products = JSON.parse(localStorage.getItem("products")) || [];
+    const box = document.getElementById("productList");
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    box.innerHTML = "";
 
-  box.innerHTML = "";
-
-  products.forEach((p, index) => {
-    box.innerHTML += `
-      <div onclick="openProduct(${index})" style="
-          width:174px;
-          height:280px;
-          border:1px solid #ccc;
-          border-radius:0px;
-          cursor:pointer;">
-        
-        <img src="${p.image}" style="width:100%; height:200px; object-fit:cover;">
-        <h3 style="font-size:16px;">${p.name}</h3>
-        <p style="font-size:14px;">Price: ${p.price} Tk</p>
-      </div>
-    `;
-  });
+    products.forEach((p, index) => {
+        box.innerHTML += `
+        <div onclick="openProduct(${index})" style="width:170px; height:280px; border:1px solid #ccc; cursor:pointer;">
+            <img src="${p.main}" style="width:100%; height:200px; object-fit:cover;">
+            <h3 style="font-size:16px;">${p.name}</h3>
+            <p style="font-size:14px;">Price: ${p.price} Tk</p>
+        </div>`;
+    });
 }
 
-
-
-// ========= PRODUCT DETAILS PAGE OPEN =========
 function openProduct(index) {
-  let products = JSON.parse(localStorage.getItem("products")) || [];
-  localStorage.setItem("selectedProduct", JSON.stringify(products[index]));
-  window.location.href = "product-details.html";
+    localStorage.setItem("selectedProductIndex", index);
+    window.location.href = "product-details.html";
 }
 
-
-
-// ========= SEARCH FUNCTION =========
-function searchProduct() {
-  const searchText = document.getElementById("searchBox").value.toLowerCase();
-  const products = JSON.parse(localStorage.getItem("products")) || [];
-  const box = document.getElementById("productList");
-
-  box.innerHTML = "";
-
-  let filtered = products.filter(p =>
-    p.name.toLowerCase().includes(searchText)
-  );
-
-  filtered.forEach((p, index) => {
-    box.innerHTML += `
-      <div onclick="openProduct(${index})" style="
-          width:174px;
-          height:280px;
-          border:1px solid #ccc;
-          cursor:pointer;">
-        
-        <img src="${p.image}" style="width:100%; height:200px; object-fit:cover;">
-        <h3 style="font-size:16px;">${p.name}</h3>
-        <p style="font-size:14px;">Price: ${p.price} Tk</p>
-      </div>
-    `;
-  });
-}
-
-
-
-// ========= INITIAL LOAD =========
-window.onload = () => {
-  loadProducts();
-};
-
+// On page load
+window.onload = loadProducts;
 </script>
+
+  <script>
+function searchProduct() {
+    let text = document.getElementById("searchBox").value.toLowerCase();
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    let box = document.getElementById("productList");
+
+    box.innerHTML = "";
+
+    let match = false;
+
+    products.forEach((p, index) => {
+        if (p.name.toLowerCase().includes(text)) {
+            match = true;
+            box.innerHTML += `
+            <div onclick="openProduct(${index})" style="width:170px; height:280px; border:1px solid #ccc; cursor:pointer;">
+                <img src="${p.main}" style="width:100%; height:200px; object-fit:cover;">
+                <h3 style="font-size:16px;">${p.name}</h3>
+                <p style="font-size:14px;">Price: ${p.price} Tk</p>
+            </div>`;
+        }
+    });
+
+    // যদি কিছুই না মেলে
+    if (!match) {
+        box.innerHTML = `<p style="text-align:center; width:100%">No product found</p>`;
+    }
+}
+</script>
+
 
 
 </body>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Details</title>
+<style>
+body { 
+    font-family:Arial; 
+    padding:20px; 
+    background:#f3f3f3; 
+    margin: 0;
+}
+.product-detail { 
+    max-width:500px; 
+    margin:20px auto; 
+    border:1px solid #ccc; 
+    border-radius:10px; 
+    padding:20px; 
+    background:white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+#pImg { 
+    width:100%; 
+    height:300px; 
+    object-fit:scale-down; 
+   
+    margin-bottom:10px; 
+
+}
+.small-images { 
+    display:flex; 
+    gap:10px; 
+    justify-content:center; 
+    margin-bottom:20px;
+    flex-wrap: wrap;
+}
+.small-images img { 
+    width:80px; 
+    height:80px; 
+    border-radius:8px; 
+    object-fit:cover; 
+    border:2px solid transparent; 
+    cursor:pointer; 
+    transition:0.3s;
+}
+.small-images img:hover, 
+.small-images img.active { 
+    border:2px solid tomato; 
+}
+button { 
+    margin-top:15px; 
+    padding:10px 20px; 
+    border:none; 
+    cursor:pointer; 
+    border-radius:6px; 
+    font-weight: bold;
+}
+h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+#pPrice {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e44d26;
+}
+#pDesc {
+    color: #666;
+    line-height: 1.6;
+}
+</style>
+</head>
+<body>
+
+<div class="product-detail">
+    <button onclick="goBack()" style="background:black;color:white;"> ← </button>
+    <br><br>
+    
+    <img id="pImg" src="" alt="Main Product Image">
+    
+    <div class="small-images" id="smallImagesBox"></div>
+
+    <h1 id="pName"></h1>
+    <p id="pPrice"></p>
+    
+    <button style="background:tomato;color:white;width:100%;height:50px;font-size:18px;margin:20px 0;">
+        Order Now
+    </button>
+    
+    <h2>Description</h2>
+    <p id="pDesc"></p>
+</div>
+
+<script>
+const products = JSON.parse(localStorage.getItem("products")) || [];
+const index = localStorage.getItem("selectedProductIndex");
+if(index !== null){
+    const product = products[index];
+    document.getElementById("pImg").src = product.main;
+    document.getElementById("pName").innerText = product.name;
+    document.getElementById("pPrice").innerText = "Price: "+product.price+" Tk";
+    document.getElementById("pDesc").innerText = product.description;
+
+    const box = document.getElementById("smallImagesBox");
+    if(product.imgs && product.imgs.length > 0){
+        box.innerHTML = product.imgs.map(img => `<img src="${img}" onclick="changeBig(this.src)">`).join('');
+    }
+}
+
+function changeBig(src){ document.getElementById("pImg").src = src; }
+function goBack(){ window.history.back(); }
+</script>
+
+</body>
+</html>
+

@@ -1,276 +1,418 @@
-<div id="productList" style="display:flex; flex-wrap: wrap; grid-template-columns: repeat(2, 1fr);gap:5px; margin: auto;"></div>
-
-// profile page-এ products show করার function
-function displayProducts() {
-  const box = document.getElementById("productList");
-  let products = JSON.parse(localStorage.getItem("products")) || [];
-  box.innerHTML = "";
-  products.forEach(p => {
-    box.innerHTML += `
-      <div style="border:1px solid #ccc;padding:10px;">
-        <img src="${p.image}" style="width:100%; height:120px; object-fit:cover; border-radius:8px;">
-        <h3 style="font-size:16px;">${p.name}</h3>
-        <p style="font-size:14px;">Price: ${p.price} Tk</p>
-      </div>
-    `;
-  });
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Add</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+<style>
+#fileInput { display:none; }
+.upload-btn { 
+    width:50px; height:50px; 
+    background:#fff; 
+    border-radius:0px; 
+    display:flex; 
+    justify-content:center; 
+    align-items:center; 
+    cursor:pointer; 
+    border:1px solid #999; 
+    margin-bottom:10px; 
+    font-size:30px; 
 }
- <div style="border:1px solid #ccc; border-radius:10px; padding:10px;">
-        <img src="${p.image}" style="width:100%; height:120px; object-fit:cover; border-radius:8px;">
-        <h3 style="font-size:16px;">${p.name}</h3>
-        <p style="font-size:14px;">Price: ${p.price} Tk</p>
-      </div>
-      <script>
-    // ⭐ Review Count
-    const star = document.getElementById("star");
-    const countDisplay = document.getElementById("count");
-    let count = parseInt(localStorage.getItem("starCount")) || 0;
-    countDisplay.textContent = count;
-    star.addEventListener("click", () => {
-      count++;
-      localStorage.setItem("starCount", count);
-      countDisplay.textContent = count;
-    });
+.box-container { 
+    display:flex; 
+    gap:10px; 
+    margin-top:10px; 
+}
 
-    // 🌓 Dark Mode
-    const themeBtn = document.getElementById("themeBtn");
-    if (localStorage.getItem("theme") === "dark") {
-      document.body.classList.add("dark");
-      themeBtn.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+
+.img-box { 
+    position:relative; 
+    width:80px; 
+    height:80px; 
+    border:1px solid #888; 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    color:#777; 
+    overflow:hidden; 
+    font-size:12px; 
+}
+.img-box img { 
+    width:100%; 
+    height:100%; 
+    object-fit:cover; 
+}
+.remove-btn { 
+    position:absolute; 
+    top:2px; 
+    right:2px; 
+    background:rgba(0,0,0,0.7); 
+    color:white; 
+    width:18px; 
+    height:18px; 
+    border-radius:50%; 
+    font-size:12px; 
+    line-height:18px; 
+    text-align:center; 
+    cursor:pointer; 
+    display:none; 
+    z-index: 2;
+}
+.img-box.has-img .remove-btn { 
+    display:block; 
+}
+
+.product-card:hover {
+    transform: scale(1.03);
+}
+
+
+.product-card { 
+    border:1px solid rgb(219, 205, 205); 
+    margin-top:15px; 
+    width:205px; 
+    cursor:pointer; 
+   padding:5px;
+    background: white;
+    
+}
+.big-image { 
+    width:100%; 
+    height:200px; 
+    object-fit:unset; 
+    margin-bottom:10px; 
+}
+.small-images { 
+    display:flex; 
+    gap:8px; 
+    margin-bottom:10px; 
+    flex-wrap: wrap;
+}
+.small-images img { 
+    width:50px; 
+    height:50px; 
+    border-radius:6px; 
+    object-fit:cover; 
+}
+.btn-pa { 
+    width:150px; 
+    height:35px; 
+    border-radius:5px; 
+    margin-left:25%; 
+    background-color: rgb(123,158,63); 
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+#pName, #pPrice { 
+    width:95%; 
+    height:30px; 
+    border-radius:5px; 
+    font-size:16px; 
+    color:#000; 
+    margin-bottom:5px; 
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+.bigbox { 
+    border:px solid rgb(205, 68, 68); 
+    max-width:300px; 
+    padding:20px; 
+    margin: 20px auto;
+    background: #f9f9f9;
+}
+h2 {
+    margin-left: 20px;
+}
+a {
+  text-decoration: none;
+  color:black;
+}
+/* Product list */
+#productList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+/*#productList{
+display:flex; flex-wrap:wrap;  border:px solid red;
+}*/
+
+#userName{
+    margin-left:20px;
+   width:80%;
+   height:30px;
+   text-align: center;
+   font-size:20px; border:none;
+}
+.btn-pa1{
+    width:150px; 
+    height:35px; 
+    border-radius:5px; 
+     
+    background-color: rgb(123,158,63); 
+    color: white;
+    border: none;
+    cursor: pointer;
+   font-size:18px;
+}
+/* Phone Responsive */
+@media (max-width: 480px) {
+
+    .header {
+        max-width: 100%;
+        text-align: center;
+    }
+ .btn-pa1{
+    margin: auto;
+   
+ }
+   
+
+    #userName {
+        width: 90%;
+       
     }
 
-    themeBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-      if (document.body.classList.contains("dark")) {
-        localStorage.setItem("theme", "dark");
-        themeBtn.innerHTML = `<i class="fa-solid fa-sun"></i>`;
-      } else {
-        localStorage.setItem("theme", "light");
-        themeBtn.innerHTML = `<i class="fa-solid fa-moon"></i>`;
-      }
-    });
+    .bigbox {
+       
+        max-width: 90%;
+        margin: auto;
+    }
 
-    // 🖼️ Profile Image Upload
-    const upload = document.getElementById("upload");
-    const profileImg = document.getElementById("profileImg");
-    const savedImg = localStorage.getItem("profileImage");
+    .product-card {
+        width: 40%;
+        padding: 5px;
+    }
 
-    if (savedImg) profileImg.src = savedImg;
+    .big-image {
+        height: 120px;
+    }
 
-    upload.addEventListener("change", () => {
-      const file = upload.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          profileImg.src = reader.result;
-          localStorage.setItem("profileImage", reader.result);
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-  </script>
- <script>
-function saveProduct() {
-  const name = document.getElementById("pName").value;
-  const price = document.getElementById("pPrice").value;
-  const imageFile = document.getElementById("pImage").files[0];
-
-  if (!name || !price || !imageFile) {
-    alert("Please fill all fields!");
-    return;
-  }
-
-  const reader = new FileReader();
-  reader.onload = function () {
-    const product = {
-      name: name,
-      price: price,
-      image: reader.result
-    };
-
-    // পুরানো প্রোডাক্ট নাও
-    let products = JSON.parse(localStorage.getItem("products")) || [];
-
-    // নতুন যোগ করো
-    products.push(product);
-
-    // localStorage এ সেভ করো
-    localStorage.setItem("products", JSON.stringify(products));
-
-    alert("Product Added Successfully!");
-
-    // Clear
-    document.getElementById("pName").value = "";
-    document.getElementById("pPrice").value = "";
-    document.getElementById("pImage").value = "";
-  };
-
-  reader.readAsDataURL(imageFile);
+    .small-images img {
+        width: 40px;
+        height: 40px;
+    }
 }
 
+/* Tablet Styles */
+@media (min-width: 481px) and (max-width: 900px) {
+    .product-card {
+        width:30%;
+    }
+    .btn-pa1{
+    margin: auto;
+ }
+ .header {
+        max-width: 100%;
+        text-align: center;
+    }
+ .btn-pa1{
+    margin: auto;
+ }
+}
 
+/* Large PC */
+@media (min-width: 901px) {
+    .product-card {
+        width: 10%;
+    }
+    .header {
+        max-width: 100%;
+        text-align: center;
+    }
+ .btn-pa1{
+    margin: auto;
+ }
+}
+</style>
+</head>
+<body>
+    <a href="index.html">home</a>
+<div class="header" style="margin: auto; max-width:300px; border:px solid red;">
 
-
-function saveProduct() {
-  const name = document.getElementById("pName").value;
-  const price = document.getElementById("pPrice").value;
-  const imageFile = document.getElementById("pImage").files[0];
-
-  if (!name || !price || !imageFile) {
-    alert("Please fill all fields!");
-    return;
-  }
-
-  const reader = new FileReader();
-
-  reader.onload = function () {
-    const product = {
-      name: name,
-      price: price,
-      image: reader.result
-    };
-
-    let products = JSON.parse(localStorage.getItem("products")) || [];
-    products.push(product);
-
-    localStorage.setItem("products", JSON.stringify(products));
-
-    alert("Product Added Successfully!");
+<div class="profileone" style="position:relative;">
+    <input type="file" id="profile" accept="image/*" style=" width:200px;height:200px;border-radius:50%;border:1px solid rgb(224, 226, 224); margin-left:15%; display:none;">
     
-    // Clear
-    document.getElementById("pName").value = "";
-    document.getElementById("pPrice").value = "";
-    document.getElementById("pImage").value = "";
-
-    // Optional: Home page এ নেবে
-    // window.location.href = "index.html";
-  };
-
-  reader.readAsDataURL(imageFile);
-}
-
-</script>
-<script>
-function saveProduct() {
-  const name = document.getElementById("pName").value;
-  const price = document.getElementById("pPrice").value;
-  const imageFile = document.getElementById("pImage").files[0];
-
-  if (!name || !price || !imageFile) {
-    alert("Please fill all fields!");
-    return;
-  }
-
-  const reader = new FileReader();
-  reader.onload = function () {
-    const product = {
-      name: name,
-      price: price,
-      image: reader.result
-    };
-
-    // localStorage থেকে products load করো
-    let products = JSON.parse(localStorage.getItem("products")) || [];
-
-    // নতুন product add করো
-    products.push(product);
-
-    // localStorage-এ save করো
-    localStorage.setItem("products", JSON.stringify(products));
-
-    alert("Product Added Successfully!");
-
-    // clear fields
-    document.getElementById("pName").value = "";
-    document.getElementById("pPrice").value = "";
-    document.getElementById("pImage").value = "";
-
-    // profile page-এও product show করতে চাইলে call করো
-    displayProducts();
-  };
-  reader.readAsDataURL(imageFile);
-}
-
-// profile page-এ products show করার function
-function displayProducts() {
-  const box = document.getElementById("productList");
-  let products = JSON.parse(localStorage.getItem("products")) || [];
-  box.innerHTML = "";
-  products.forEach(p => {
-    box.innerHTML += `
-      <div style="
-  width:150px;
-  height:280px;
-  border:1px solid #ccc;
-  border-radius:0px;
-  gap:10px;
-  cursor:pointer;">
-  
-  <img src="${p.image}" style="width:100%; height:200px; object-fit:cover; border-radius:px;">
-  
-  <h3 style="font-size:16px;">${p.name}</h3>
-  <p style="font-size:14px;">Price: ${p.price} Tk</p>
+    <img id="profilePreview" src="" 
+         style="width:200px;height:200px;border-radius:50%;border:1px solid #ccc;margin:auto;object-fit:cover;">
 </div>
 
-    `;
-  });
+<div class="profiletwo" style="position:absolute;margin-left:170px;">
+    <i class="fa-regular fa-camera" id="cameraIcon" style="font-size:25px;cursor:pointer;"></i>
+</div>
+
+
+<br><br>
+
+
+<input type="text" id="userName" placeholder="Enter your name"><br><br>
+<a href="https://wa.me/8801319992654"><button class="btn-pa1">Message</button"></a>
+
+
+   
+</div>
+
+<div class="bigbox">
+    
+    <input id="pName" type="text" placeholder="Product Name">
+    <input id="pPrice" type="text" placeholder="Price (TK)"><br><br>
+
+    <label for="fileInput" class="upload-btn"><i class="fa-solid fa-photo-film"></i></label>
+    <input type="file" id="fileInput" accept="image/*" multiple>
+    <span style="font-size: 12px; color: #666;">Click to upload images (max 4)</span>
+
+    <div class="box-container">
+        <div class="img-box" id="box1">Box 1 <span class="remove-btn">×</span></div>
+        <div class="img-box" id="box2">Box 2 <span class="remove-btn">×</span></div>
+        <div class="img-box" id="box3">Box 3 <span class="remove-btn">×</span></div>
+        <div class="img-box" id="box4">Box 4 <span class="remove-btn">×</span></div>
+    </div><br>
+
+    <button class="btn-pa" onclick="addProduct()">Add Product</button>
+</div>
+
+
+<a href="Updated product-details.html"><div id="productList"></div></a>
+
+<script>
+let products = JSON.parse(localStorage.getItem('products')) || [];
+const fileInput = document.getElementById("fileInput");
+
+function loadProducts() {
+    const productList = document.getElementById("productList");
+    productList.innerHTML = '';
+    
+    products.forEach((product, index) => {
+        productList.innerHTML += `
+        <div class="product-card" onclick='openDetails(${index})'>
+            <img class="big-image" src="${product.main}">
+            <div class="small-images">
+                ${product.imgs.map(img => `<img src="${img}">`).join('')}
+            </div>
+            <h3>${product.name}</h3>
+            <p>Price: ${product.price} TK</p>
+        </div>
+        `;
+    });
 }
 
-// page load হলে profile page-এ product দেখাবে
-displayProducts();
+fileInput.addEventListener("change", function(){
+    const files = this.files;
+    for(let file of files){
+        if(!file.type.startsWith('image/')) continue;
 
+        let emptyBox = null;
+        for(let i=1;i<=4;i++){
+            let box = document.getElementById("box"+i);
+            if(!box.classList.contains("has-img")){
+                emptyBox = box;
+                break;
+            }
+        }
+        if(!emptyBox){ alert("Maximum 4 images allowed!"); break; }
 
+        const reader = new FileReader();
+        reader.onload = function(e){
+            emptyBox.innerHTML = `<img src="${e.target.result}"><span class="remove-btn">×</span>`;
+            emptyBox.classList.add("has-img");
+            emptyBox.querySelector(".remove-btn").onclick = function(){
+                emptyBox.innerHTML = "Box "+emptyBox.id.replace("box","");
+                emptyBox.classList.remove("has-img");
+            };
+        };
+        reader.readAsDataURL(file);
+    }
+    this.value = "";
+});
 
-function displayProducts() {
-  const box = document.getElementById("productList");
-  let products = JSON.parse(localStorage.getItem("products")) || [];
-  box.innerHTML = "";
+function addProduct(){
+    let name = document.getElementById("pName").value.trim();
+    let price = document.getElementById("pPrice").value.trim();
+    if(!name || !price){ alert("Please enter Name and Price!"); return; }
 
-  products.forEach((p, index) => {
-    box.innerHTML += `
-      <div style="
-        width:200px;
-        height:300px;
-        border:1px solid #ccc;
-        border-radius:5px;
-        padding:5px;
-        position:relative;
-      ">
+    let images = [];
+    for(let i=1;i<=4;i++){
+        let box = document.getElementById("box"+i);
+        if(box.classList.contains("has-img")){
+            images.push(box.querySelector("img").src);
+        }
+    }
+    if(images.length===0){ alert("Please add at least 1 image!"); return; }
 
-        <img src="${p.image}" style="width:100%; height:200px; object-fit:cover; border-radius:5px;">
+    let productData = { name, price, main: images[0], imgs: images.slice(1), description: "Best product description" };
+    products.push(productData);
+    localStorage.setItem('products', JSON.stringify(products));
+    loadProducts();
 
-        <h3 style="font-size:16px;">${p.name}</h3>
-        <p style="font-size:14px;">Price: ${p.price} Tk</p>
-
-        <button onclick="deleteProduct(${index})"
-          style="
-            width:100%;
-            padding:6px;
-            background:red;
-            color:white;
-            border:none;
-            border-radius:5px;
-            margin-top:5px;
-            cursor:pointer;
-          ">
-          Delete
-        </button>
-
-      </div>
-    `;
-  });
+    document.getElementById("pName").value = "";
+    document.getElementById("pPrice").value = "";
+    for(let i=1;i<=4;i++){
+        let box = document.getElementById("box"+i);
+        box.innerHTML = "Box "+i;
+        box.classList.remove("has-img");
+    }
 }
-function deleteProduct(index) {
-  let products = JSON.parse(localStorage.getItem("products")) || [];
 
-  // নির্দিষ্ট index এর প্রোডাক্ট মুছো
-  products.splice(index, 1);
-
-  // আবার localStorage এ save করো
-  localStorage.setItem("products", JSON.stringify(products));
-
-  // আবার লিস্ট রিফ্রেশ করো
-  displayProducts();
+function openDetails(index){
+    localStorage.setItem("selectedProductIndex", index);
+    window.location.href = "product-details.html";
 }
 
+// Initial load
+loadProducts();
 </script>
+<script>
+// Load stored profile image + name
+window.onload = function() {
+    let savedImg = localStorage.getItem("userProfileImage");
+    let savedName = localStorage.getItem("userName");
+
+    if(savedImg){
+        document.getElementById("profilePreview").src = savedImg;
+    }
+
+    if(savedName){
+        document.getElementById("userName").value = savedName;
+    }
+};
+
+// Open file input when profile box or camera clicked
+document.getElementById("profilePreview").onclick = function(){
+    document.getElementById("profile").click();
+};
+document.getElementById("cameraIcon").onclick = function(){
+    document.getElementById("profile").click();
+};
+
+// When user selects image
+document.getElementById("profile").addEventListener("change", function(){
+    const file = this.files[0];
+    if(!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e){
+        let imgURL = e.target.result;
+        document.getElementById("profilePreview").src = imgURL;
+
+        // Save to localStorage
+        localStorage.setItem("userProfileImage", imgURL);
+    };
+    reader.readAsDataURL(file);
+});
+
+// Save Name live
+document.getElementById("userName").addEventListener("input", function(){
+    localStorage.setItem("userName", this.value);
+});
+</script>
+
+
+</body>
+</html>
+
+
+
