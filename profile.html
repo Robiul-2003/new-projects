@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product</title>
+</head>
+<style>
+    
+  .fullbox{
+        margin: auto;
+        max-width:900px;
+        border:1px solid rgb(235, 225, 225);
+    }
+
+      .small{
+        width:60px;
+        height:60px;
+        margin:5px;
+        cursor:pointer;
+        border:1px solid #aaa;
+        padding:2px;
+        object-fit:cover;
+        transition: .3s;
+    }
+
+    .small:hover{
+        border-color:red;
+        transform:scale(1.1);
+    }
+    .btn-1{
+       border-radius:5px; border:none;
+       font-size:20px;color:white;
+       width:35%;
+       height:40px;
+       background-color:tomato;
+       display:block;
+       margin:auto;
+    }
+    a{
+      text-decoration: none;
+        
+    }
+    .back{
+    width:80px;height:30px;
+    border:1px solid rgb(175, 229, 217);background-color: rgb(249, 245, 245);
+}
+</style>
+<body>
+    <a href="index.html"><button class="back">← Back</button></a><br><br>
+
+    <div class="fullbox">
+        <img id="bigImage" src="realme.png" width="100%"><br>
+    <img src="realme.png" class="small" onclick="changeImage(this)">
+    <img src="vivo.png" class="small" onclick="changeImage(this)">
+    <img src="choclet2.png" class="small"  onclick="changeImage(this)"><br>
+    <span style="margin-left:15px;font-size:20px; font-weight:800;">ViVO</span><br>
+    <span style="margin-left:15px;font-size:18px; font-weight:700;">Price: 1500 Tk</span><br><br>
+    <a href="https://wa.me/8801319992654" target="_blank"><button class="btn-1">order now</button></a><br><br>
+    </div>
+
+    <script>
+        function changeImage(smallImg){
+            document.getElementById("bigImage").src = smallImg.src;
+        }
+    </script>
+</body>
+</html>

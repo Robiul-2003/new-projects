@@ -4,14 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-
- 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-
   <style>
     * {box-sizing: border-box;}
     body {font-family: Verdana, sans-serif; margin: 0; padding: 0;background-color: #fff; }
-
     /* HEADER */
     .header {
       width: 100%;
@@ -24,43 +20,34 @@
       padding-top:20px;
        position: fixed;
     }
-
     .header input {
       width:50%;
       height: 38px;
       border:1px solid #ccc;
       border-radius: 5px;
-      
-      
     }
-    
+    .fa-list{
+        font-size:20px;
+    }
     .icon-btn {
-      width:50px;
-      height:40px;
-      
       background:tomato;
-      border: none;
-      border-radius: 6px;
       cursor: pointer;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      margin-top:5px;
+     border:none;
     }
-
     /* MENU */
     .menu {
       position: absolute;
      top:70px;
       right:0px;
-      background: white;
+      background: rgb(245, 244, 244);
       width:50%;
      height:950px;
       display: none;
       z-index: 100;
     }
-
     .menu.show { display: block; }
-
     .menu a {
       display: block;
       padding: 10px;
@@ -69,9 +56,7 @@
       border-bottom: 1px solid #eee;
       font-size:18px;
     }
-
     .menu a:last-child { border-bottom: none; }
-
     .menu a:hover {
       background: #f5f5f5;
     }
@@ -156,44 +141,8 @@ margin: auto;
   grid-template-columns: repeat(2, 1fr);gap:5px; border:px solid red; width:98%;
 }
 
-@media (min-width: 1024px) {
 
-  .header {
-      height:80px;
-      padding:20px 40px;
-  }
 
-  .header input {
-      width:40%;
-      height:45px;
-      font-size:18px;
-  }
-
-  .icon-btn {
-      width:55px;
-      height:45px;
-  }
-
-  .slideshow-container {
-      max-width:1200px;
-      height:450px;
-  }
-
-  .sliderimg {
-      height:450px;
-  }
-
-  #productList {
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:20px;
-      width:90%;
-  }
-
-  #productList div {
-      height:300px;
-  }
-}
 @media (max-width: 480px) {
   
   .header {
@@ -244,7 +193,12 @@ margin: auto;
       width:100%;
       height:250px;
   }
+  .card{
+    width:500px;
+    height:500px;
+  }
 }
+
 @media (min-width: 480px) and (max-width: 991px) {
   
   .header {
@@ -266,13 +220,6 @@ margin: auto;
   .sliderimg {
       height:300px;
   }
-
- /* #productList {
-      display:grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap:10px;
-      width:95%;
-  }*/
    #productList{
     display: flex; flex-wrap: wrap;
    }
@@ -280,15 +227,34 @@ margin: auto;
   #productList div {
       height:260px;
   }
+  .card{
+    width:500px;
+    height:500px;
+  }
 }
-
+.smallimg{
+  width:30px;
+  height:30px;
+  border:1px solid black;
+}
+.logo{
+  background-color: rgb(187, 85, 17);
+  width:80px;
+  height:40px;
+  border:px solid tomato;
+  border-radius:10%;
+}
+.card{
+  width:170px;
+  height:220px;border:1px solid rgb(202, 195, 195);
+}
   </style>
 </head>
 <body>
 
   <!-- HEADER -->
   <div class="header">
-     <span style="font-size:28px; right:10%;"><span style="color:#b32424;">A</span>wal</span> 
+     <span style=""><img src="logo.png" class="logo"> </span> 
       <input type="text" id="searchBox" placeholder="Search..." onkeyup="searchProduct()">
 
       
@@ -297,7 +263,7 @@ margin: auto;
       </button>
 
       <nav id="mainMenu" class="menu">
-        <a href="index.html"><div class="soman1" style="display:flex; justify-content: center;"><p class="names" style=""><span style="color:#b32424;">A</span>wal</p> </div></a>
+        <a href="index.html"><div class="soman1" style="display:flex; justify-content: center;"><p class="names" style=""><img src="logo.png" class="logo"> </p> </div></a>
        <a href="testy.html"><div class="soman" style="display: flex;"><i class="fa-solid fa-user"></i>  Account<img id="headerProfile" class="header-profile"></div></a>
        <a href="https://wa.me/8801319992654" target="_blank"><i class="fa-brands fa-whatsapp"></i> Message</a>
         <a href="#"><i class="fa-solid fa-video"></i> Video</a>
@@ -332,9 +298,6 @@ margin: auto;
     </div>
 
   </div>
-  
-
-
   <div style="text-align:center">
     <span class="dot"></span> 
     <span class="dot"></span> 
@@ -342,8 +305,17 @@ margin: auto;
   </div>
 <br><br>
   <!-- PRODUCTS -->
-   
 <a href="Updated product-details.html"><div id="productList"></div></a>
+ <div id="productBox" style= "width:97%; border:px solid red; display:flex; flex-wrap:wrap; gap:5px; margin: auto;"></div><br>
+
+
+<div class="product" style="width:97%; border:px solid red; display: flex; flex-wrap: wrap; gap:5px;margin: auto; ">
+  <a href="Updated product-details.html"><div class="card"><img src="vivo.png" width="165px" height="70%"><br><br> <span>vivo<br>price:10,000 Tk</span> </div></a>
+  <a href="profile.html"><div class="card"><img src="realme.png" width="165px" height="70%">
+    <br><br>
+    <span>vivo<br>price:10,000 Tk</span> </div></a>
+</div>
+
 
   <script>
 // ========= MENU TOGGLE =========
@@ -353,9 +325,6 @@ const mainMenu = document.getElementById("mainMenu");
 menuToggle.addEventListener("click", () => {
   mainMenu.classList.toggle("show");
 });
-
-
-
 // ========= SLIDER AUTO PLAY =========
 let slideIndex = 0;
 showSlides();
@@ -382,62 +351,36 @@ function showSlides() {
 }
 
 
-//===load product ====
+
+
+</script>
+<script>
+let products = JSON.parse(localStorage.getItem('products')) || [];
+const productBox = document.getElementById("productBox");
+
 function loadProducts() {
-    const box = document.getElementById("productList");
-    let products = JSON.parse(localStorage.getItem("products")) || [];
-    box.innerHTML = "";
-
+    productBox.innerHTML = "";
     products.forEach((p, index) => {
-        box.innerHTML += `
-        <div onclick="openProduct(${index})" style="width:170px; height:280px; border:1px solid #ccc; cursor:pointer;">
-            <img src="${p.main}" style="width:100%; height:200px; object-fit:cover;">
-            <h3 style="font-size:16px;">${p.name}</h3>
-            <p style="font-size:14px;">Price: ${p.price} Tk</p>
-        </div>`;
+        productBox.innerHTML += `
+        <a href="product-details.html" onclick="selectProduct(${index})">
+            <div class="card" style="width:170px; height:260px; border:1px solid #ddd;">
+                <img src="${p.main}" width="168px" height="180px">
+                <span><br>${p.name}<br>Price: ${p.price} Tk</span>
+            </div>
+        </a>
+        `;
     });
 }
 
-function openProduct(index) {
-    localStorage.setItem("selectedProductIndex", index);
-    window.location.href = "product-details.html";
+function selectProduct(i){
+    localStorage.setItem("selectedProductIndex", i);
 }
 
-// On page load
-window.onload = loadProducts;
+// Load products on page load
+window.onload = function() {
+    loadProducts();
+};
 </script>
-
-  <script>
-function searchProduct() {
-    let text = document.getElementById("searchBox").value.toLowerCase();
-    let products = JSON.parse(localStorage.getItem("products")) || [];
-    let box = document.getElementById("productList");
-
-    box.innerHTML = "";
-
-    let match = false;
-
-    products.forEach((p, index) => {
-        if (p.name.toLowerCase().includes(text)) {
-            match = true;
-            box.innerHTML += `
-            <div onclick="openProduct(${index})" style="width:170px; height:280px; border:1px solid #ccc; cursor:pointer;">
-                <img src="${p.main}" style="width:100%; height:200px; object-fit:cover;">
-                <h3 style="font-size:16px;">${p.name}</h3>
-                <p style="font-size:14px;">Price: ${p.price} Tk</p>
-            </div>`;
-        }
-    });
-
-    // যদি কিছুই না মেলে
-    if (!match) {
-        box.innerHTML = `<p style="text-align:center; width:100%">No product found</p>`;
-    }
-}
-</script>
-
-
-
 </body>
 </html>
 
