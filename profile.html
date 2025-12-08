@@ -43,26 +43,87 @@
     }
     .back{
     width:80px;height:30px;
-    border:1px solid rgb(175, 229, 217);background-color: rgb(249, 245, 245);
+    border:1px solid rgb(175, 229, 217);background-color:rgb(249, 245, 245);
 }
+ .navber{
+            display:flex;
+            gap:10px;
+            margin-top:20px;
+        }
+
+        .tit{
+            padding:7px 20px;
+            border:1px solid rgb(175, 229, 217);
+            font-size:20px;
+            cursor:pointer;border-radius:5px;
+        }
+
+        .active{
+            background:rgb(52, 50, 50);
+            color:white;
+        }
+
+        .content-box{
+            margin-top:10px;
+            padding:10px;
+            font-size:18px;
+            border-top:1px solid #ddd;
+            display:none;
+        }
 </style>
 <body>
     <a href="index.html"><button class="back">← Back</button></a><br><br>
 
     <div class="fullbox">
-        <img id="bigImage" src="realme.png" width="100%"><br>
+        <img id="bigImage" src="vivo.png" width="100%"><br>
     <img src="realme.png" class="small" onclick="changeImage(this)">
     <img src="vivo.png" class="small" onclick="changeImage(this)">
     <img src="choclet2.png" class="small"  onclick="changeImage(this)"><br>
-    <span style="margin-left:15px;font-size:20px; font-weight:800;">ViVO</span><br>
+    <span style="margin-left:15px;font-size:20px; font-weight:800;">Vivo</span><br>
     <span style="margin-left:15px;font-size:18px; font-weight:700;">Price: 1500 Tk</span><br><br>
-    <a href="https://wa.me/8801319992654" target="_blank"><button class="btn-1">order now</button></a><br><br>
+    <a href="https://wa.me/8801319992654" target="_blank"><button class="btn-1">order now</button></a><br>
+
+    
+    <!-- TAB BUTTONS -->
+    <div class="navber">
+        <div class="tit active" onclick="showTab('details', this)">Details</div>
+        <div class="tit" onclick="showTab('description', this)">Description</div>
+    </div>
+
+    <!-- TAB CONTENTS -->
+    <div id="details" class="content-box" style="display:block;">
+        ✔ Brand: Vivo <br>
+        ✔ Battery Backup: 5000mAh <br>
+        ✔ Camera: 48MP <br>
+        ✔ Warranty: 1 Year <br>
+    </div>
+
+    <div id="description" class="content-box">
+        This is a high-quality Vivo product.  
+        Smooth performance, long battery life, and stylish design.
+    </div>
     </div>
 
     <script>
         function changeImage(smallImg){
             document.getElementById("bigImage").src = smallImg.src;
         }
+
+        function showTab(tabId, element){
+    // সব content hide
+    document.getElementById("details").style.display = "none";
+    document.getElementById("description").style.display = "none";
+
+    // clicked content show
+    document.getElementById(tabId).style.display = "block";
+
+    // সব tab inactive
+    let allTabs = document.querySelectorAll(".tit");
+    allTabs.forEach(t => t.classList.remove("active"));
+
+    // clicked tab active
+    element.classList.add("active");
+}
     </script>
 </body>
 </html>
