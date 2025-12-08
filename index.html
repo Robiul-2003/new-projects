@@ -193,10 +193,7 @@ margin: auto;
       width:100%;
       height:250px;
   }
-  .card{
-    width:500px;
-    height:500px;
-  }
+   
 }
 
 @media (min-width: 480px) and (max-width: 991px) {
@@ -228,9 +225,9 @@ margin: auto;
       height:260px;
   }
   .card{
-    width:500px;
-    height:500px;
-  }
+  width:170px;
+  height:220px;border:1px solid rgb(202, 195, 195); border:5px solid red;
+}
 }
 .smallimg{
   width:30px;
@@ -246,8 +243,15 @@ margin: auto;
 }
 .card{
   width:170px;
-  height:220px;border:1px solid rgb(202, 195, 195);
+  height:220px;border:1px solid rgb(202, 195, 195); 
 }
+.so{
+  padding-left:7px; font-size:18px;
+}
+.st{
+  padding-left:7px; font-size:16px; 
+}
+
   </style>
 </head>
 <body>
@@ -310,10 +314,10 @@ margin: auto;
 
 
 <div class="product" style="width:97%; border:px solid red; display: flex; flex-wrap: wrap; gap:5px;margin: auto; ">
-  <a href="Updated product-details.html"><div class="card"><img src="vivo.png" width="165px" height="70%"><br><br> <span>vivo<br>price:10,000 Tk</span> </div></a>
-  <a href="profile.html">                <div class="card"><img src="realme.png" width="165px" height="70%"><br><br><span>readmi<br>price:12,000 Tk</span> </div></a>
-  <a href="profileproduct.html">         <div class="card"><img src="choclet2.png" width="165px" height="70%"><br><br><span>Nike<br>price:5000 Tk</span> </div></a>
-  <a href="profileproduct.html">         <div class="card"><img src="choclet2.png" width="165px" height="70%"><br><br><span>vivo<br>price:10,000 Tk</span> </div></a>
+  <a href="Updated product-details.html"><div class="card"><img src="vivo.png" width="165px" height="70%"><br><br>   <span class="so">vivo <br><span class="st">price:12,000 Tk</span> </span> </div></a>
+  <a href="profile.html">                <div class="card"><img src="realme.png" width="165px" height="70%"><br><br> <span class="so"> Readmi <br><span class="st">price:12,000 Tk</span> </span> </div></a>
+  <a href="profileproduct.html">         <div class="card"><img src="choclet2.png" width="165px" height="70%"><br><br><span class="so">Nike<br></span> <span class="st">price:12,000 Tk</span></div></a>
+  <a href="myproduct4.html">         <div class="card"><img src="Nike4.png" width="165px" height="70%"><br><br><span class="so"> Nike 4c<br></span> <span class="st">price:12,000 Tk</span></div></a>
 </div>
 
 
@@ -381,6 +385,38 @@ window.onload = function() {
     loadProducts();
 };
 </script>
+<script>
+function searchProduct() {
+    let input = document.getElementById('searchBox').value.toLowerCase();
+    const productCards = productBox.getElementsByClassName('card');
+    const slider = document.querySelector('.slideshow-container'); // slider element
+
+    let hasMatch = false; // কোন product match করেছে কিনা
+
+    for (let i = 0; i < productCards.length; i++) {
+        let productName = productCards[i].innerText.toLowerCase();
+        if (productName.includes(input)) {
+            productCards[i].style.display = "block";
+            hasMatch = true;
+        } else {
+            productCards[i].style.display = "none";
+        }
+    }
+
+    // যদি search খালি থাকে, সব products দেখাবে এবং slider দেখাবে
+    if (input === "") {
+        for (let i = 0; i < productCards.length; i++) {
+            productCards[i].style.display = "block";
+        }
+        slider.style.display = "block";
+    } else {
+        // search input দিলে slider hide হবে
+        slider.style.display = "none";
+    }
+}
+</script>
+
+
 </body>
 </html>
 
