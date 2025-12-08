@@ -12,7 +12,7 @@
     .header {
       width: 100%;
       height:70px;
-      background-color:tomato;
+      background-color:rgb(246, 236, 236);
       z-index: 1000;
       position: relative;
       display: flex;
@@ -30,7 +30,7 @@
         font-size:20px;
     }
     .icon-btn {
-      background:tomato;
+      background:rgb(246, 236, 236);
       cursor: pointer;
       display: flex;
       margin-top:5px;
@@ -41,7 +41,7 @@
       position: absolute;
      top:70px;
       right:0px;
-      background: rgb(245, 244, 244);
+      background: rgb(246, 236, 236);
       width:50%;
      height:950px;
       display: none;
@@ -160,7 +160,7 @@ margin: auto;
   .header-profile {
       width:30px;
       height:30px;
-      margin-left:0px;
+      margin-left:20%;
   }
 
   .icon-btn {
@@ -169,7 +169,7 @@ margin: auto;
   }
 
   .menu {
-      width:70%;
+      width:50%;
       height:100vh;
       top:60px;
   }
@@ -268,7 +268,14 @@ margin: auto;
 
       <nav id="mainMenu" class="menu">
         <a href="index.html"><div class="soman1" style="display:flex; justify-content: center;"><p class="names" style=""><img src="logo.png" class="logo"> </p> </div></a>
-       <a href="testy.html"><div class="soman" style="display: flex;"><i class="fa-solid fa-user"></i>  Account<img id="headerProfile" class="header-profile"></div></a>
+
+        <a href="testy.html">
+    <div class="soman" style="display: flex; align-items:center;">
+        <i class="fa-solid fa-user"></i> Account
+        <img id="headerProfile" class="header-profile">
+    </div> 
+</a>
+    
        <a href="https://wa.me/8801319992654" target="_blank"><i class="fa-brands fa-whatsapp"></i> Message</a>
         <a href="video.html"><i class="fa-solid fa-video"></i> Video</a>
         <a href="login.html"><i class="fa-solid fa-user"></i> Sing in</a>
@@ -314,7 +321,7 @@ margin: auto;
 
 
 <div class="product" style="width:97%; border:px solid red; display: flex; flex-wrap: wrap; gap:5px;margin: auto; ">
-  <a href="Updated product-details.html"><div class="card"><img src="vivo.png" width="165px" height="70%"><br><br>   <span class="so">vivo <br><span class="st">price:12,000 Tk</span> </span> </div></a>
+  <a href="Updated product-details.html"><div class="card"><img src="vivo.png" width="165px" height="70%"><br><br>   <span class="so">Vivo <br><span class="st">price:12,000 Tk</span> </span> </div></a>
   <a href="profile.html">                <div class="card"><img src="realme.png" width="165px" height="70%"><br><br> <span class="so"> Readmi <br><span class="st">price:12,000 Tk</span> </span> </div></a>
   <a href="profileproduct.html">         <div class="card"><img src="choclet2.png" width="165px" height="70%"><br><br><span class="so">Nike<br></span> <span class="st">price:12,000 Tk</span></div></a>
   <a href="myproduct4.html">         <div class="card"><img src="Nike4.png" width="165px" height="70%"><br><br><span class="so"> Nike 4c<br></span> <span class="st">price:12,000 Tk</span></div></a>
@@ -415,6 +422,20 @@ function searchProduct() {
     }
 }
 </script>
+
+<!-- আপনার অন্য script গুলো -->
+<script>
+window.addEventListener("DOMContentLoaded", function() {
+    const menuProfile = document.getElementById("headerProfile"); // HTML ID অনুযায়ী
+    const savedImg = localStorage.getItem("userProfileImage");
+
+    if(savedImg){
+        menuProfile.src = savedImg; // localStorage থেকে ইমেজ সেট করা
+    }
+});
+</script>
+</body>
+</html>
 
 
 </body>
