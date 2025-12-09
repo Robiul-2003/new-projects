@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product</title>
+</head>
+<style>
+    
+  .fullbox{
+        margin: auto;
+        max-width:900px;
+        border:1px solid rgb(235, 225, 225);
+    }
+
+      .small{
+        width:60px;
+        height:60px;
+        margin:5px;
+        cursor:pointer;
+        border:1px solid #aaa;
+        padding:2px;
+        object-fit:cover;
+        transition: .3s;
+    }
+
+    .small:hover{
+        border-color:red;
+        transform:scale(1.1);
+    }
+    .btn-1{
+       border-radius:5px; border:none;
+       font-size:20px;color:white;
+       width:35%;
+       height:40px;
+       background-color:tomato;
+       display:block;
+       margin:auto;
+    }
+    a{
+      text-decoration: none;
+        
+    }
+    .back{
+    width:80px;height:30px;
+    border:1px solid rgb(175, 229, 217);background-color:rgb(249, 245, 245);
+}
+ .navber{
+            display:flex;
+            gap:10px;
+            margin-top:20px;
+        }
+
+        .tit{
+            padding:7px 20px;
+            border:1px solid rgb(175, 229, 217);
+            font-size:20px;
+            cursor:pointer;border-radius:5px;
+        }
+
+        .active{
+            background:rgb(52, 50, 50);
+            color:white;
+        }
+
+        .content-box{
+            margin-top:10px;
+            padding:10px;
+            font-size:18px;
+            border-top:1px solid #ddd;
+            display:none;
+        }
+</style>
+<body>
+    <a href="index.html"><button class="back">← Back</button></a><br><br>
+
+    <div class="fullbox">
+        <img id="bigImage" src="Hop.png" width="100%"><br>
+    <img src="Hop1.png" class="small" onclick="changeImage(this)">
+    <img src="Hop2.png" class="small" onclick="changeImage(this)">
+    <img src="Hop3.png" class="small"  onclick="changeImage(this)"><br>
+    <span style="margin-left:15px;font-size:20px; font-weight:800;"> Shoes </span><br>
+    <span style="margin-left:15px;font-size:20px; font-weight:700; color:tomato;">Price: 800 Tk</span><br><br>
+    <a href="https://wa.me/8801319992654" target="_blank"><button class="btn-1">order now</button></a><br>
+
+    
+    <!-- TAB BUTTONS -->
+    <div class="navber">
+        <div class="tit active" onclick="showTab('details', this)">Details</div>
+        <div class="tit" onclick="showTab('description', this)">Description</div>
+    </div>
+
+    <!-- TAB CONTENTS -->
+    <div id="details" class="content-box" style="display:block;">
+        ✔ Brand: Shoes <br>
+        ✔ Size: M | L | LX <br>
+        ✔ Color: white | black | blue <br>
+        ✔ Warranty: 1 Year <br>
+           <hr>
+        <div class="payment" style="margin: auto; width:280px;border:px solid red;">
+            <img src="Bikash.png" width="90px" height="50px">
+            <img src="Nagod.png" width="90px" height="50px">
+            <img src="Rocket.png" width="90px" height="50px">
+        </div>
+    </div>
+
+    <div id="description" class="content-box">
+        This is a high-quality Shoes product.  
+        Smooth performance, long time us, and stylish design.
+<hr>
+        <div class="payment" style="margin: auto; width:280px;border:px solid red;">
+            <img src="Bikash.png" width="90px" height="50px">
+            <img src="Nagod.png" width="90px" height="50px">
+            <img src="Rocket.png" width="90px" height="50px">
+        </div>
+
+    </div>
+    </div>
+
+    <script>
+        function changeImage(smallImg){
+            document.getElementById("bigImage").src = smallImg.src;
+        }
+
+        function showTab(tabId, element){
+    // সব content hide
+    document.getElementById("details").style.display = "none";
+    document.getElementById("description").style.display = "none";
+
+    // clicked content show
+    document.getElementById(tabId).style.display = "block";
+
+    // সব tab inactive
+    let allTabs = document.querySelectorAll(".tit");
+    allTabs.forEach(t => t.classList.remove("active"));
+
+    // clicked tab active
+    element.classList.add("active");
+}
+    </script>
+</body>
+</html>
