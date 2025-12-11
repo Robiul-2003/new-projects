@@ -152,7 +152,7 @@ margin: auto;
   }
 
   .header input {
-      width:55%;
+      width:85%;
       height:34px;
       font-size:14px;
   }
@@ -249,7 +249,27 @@ margin: auto;
 .st{
   padding-left:7px; font-size:16px; 
 }
-
+.nav {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2000;
+}
+.navone{
+  border:5px solid white;
+ width: 60px;
+  height: 60px;
+  background-color: green;
+  border-radius: 40%;
+  line-height: 60px;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
   </style>
 </head>
 <body>
@@ -265,7 +285,7 @@ margin: auto;
       </button>
 
       <nav id="mainMenu" class="menu">
-        <a href="index.html"><div class="soman1" style="display:flex; justify-content: center;"><p class="names" style=""><img src="WhatsApp Image 2025-12-09 at 15.22.30.jpeg" class="logo"> </p> </div></a>
+        <a href="index.html"><div class="soman1" style=" display:flex; justify-content: center;"><p class="names" style=""><img src="WhatsApp Image 2025-12-09 at 15.22.30.jpeg" class="logo"> </p> </div></a>
 
         <a href="testy.html">
     <div class="soman" style="display: flex; align-items:center;">
@@ -275,7 +295,7 @@ margin: auto;
 </a>
     
        <a href="https://wa.me/8801319992654" target="_blank"><i class="fa-brands fa-whatsapp"></i> Message</a>
-       <a href="#"><i class="fa-solid fa-chart-simple"></i> Market Place</a>
+       <a href="mtp.html"><i class="fa-solid fa-chart-simple"></i> Market Place</a>
         <a href="video.html"><i class="fa-solid fa-video"></i> Video</a>
         <a href="#"><i class="fa-solid fa-bell"></i> Notification</a>
         
@@ -331,7 +351,9 @@ margin: auto;
   <a href="myproduct7.html">             <div class="card2"><img src="Hop3.png" width="165px" height="70%"><br><br><span class="so">ti Shart <br></span>  <span class="st">price:700 Tk</span></div></a>
   <a href="myproduct8.html">             <div class="card2"><img src="ofwhate.png" width="165px" height="70%"><br><br><span class="so">Shart <br></span>  <span class="st">price:500 Tk</span></div></a>
 </div>
-
+<div class="nav">
+ <a href="https://wa.me/8801319992654" target="_blank"> <div class="navone">Chat</div></a>
+</div>
 
   <script>
 // ========= MENU TOGGLE =========
@@ -439,6 +461,52 @@ window.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
+<script>
+function searchProduct() {
+    let input = document.getElementById('searchBox').value.toLowerCase();
+
+    // 1) productBox এর প্রোডাক্ট
+    const cards1 = productBox.getElementsByClassName('card');
+
+    // 2) নিচের .product div এর inside প্রোডাক্ট
+    const cards2 = document.querySelectorAll('.product .card2');
+
+    // Slide hide/show
+    const slider = document.querySelector('.slideshow-container');
+
+    let hasMatch = false;
+
+    // 1) Loop cards in productBox
+    for (let card of cards1) {
+        let name = card.innerText.toLowerCase();
+        if (name.includes(input)) {
+            card.style.display = "block";
+            hasMatch = true;
+        } else {
+            card.style.display = "none";
+        }
+    }
+
+    // 2) Loop cards in .product
+    for (let card of cards2) {
+        let name = card.innerText.toLowerCase();
+        if (name.includes(input)) {
+            card.style.display = "block";
+            hasMatch = true;
+        } else {
+            card.style.display = "none";
+        }
+    }
+
+    // Slider logic
+    if (input === "") {
+        slider.style.display = "block";
+    } else {
+        slider.style.display = "none";
+    }
+}
+</script>
+
 </body>
 </html>
 
