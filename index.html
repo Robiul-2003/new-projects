@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css
+">
   <style>
     * {box-sizing: border-box;}
     body {font-family: Verdana, sans-serif; margin: 0; padding: 0;background-color: #fff; }
@@ -14,11 +15,11 @@
       height:70px;
       background-color:rgb(246, 236, 236);
       z-index: 1000;
-      position: relative;
+     
       display: flex;
       justify-content: space-around;
       padding-top:20px;
-       position: fixed;
+       position: fixed; 
     }
     .header input {
       width:50%;
@@ -148,13 +149,13 @@ margin: auto;
   .header {
       height:60px;
       padding:10px;
-      justify-content: space-between;
+      justify-content: space-between;border:px solid red;
   }
 
   .header input {
-      width:85%;
+      width:50px;
       height:34px;
-      font-size:14px;
+      border:5px solid tomato;
   }
 
   .header-profile {
@@ -194,6 +195,10 @@ margin: auto;
       height:250px;
   }
   
+ 
+  .cardimg{
+     width:165px; height:70%;
+  }
   }
 @media  (max-width: 991px) {
   
@@ -223,10 +228,14 @@ margin: auto;
   #productList div {
       height:260px;
   }
-  
  
-
+ 
+ .cardimg{
+     width:165px; height:70%;
+  }
 }
+
+
 .smallimg{
   width:30px;
   height:30px;
@@ -239,9 +248,15 @@ margin: auto;
   border:px solid tomato;
   border-radius:10%;
 }
+.product{
+  width:97%; display: flex; flex-wrap: wrap; gap:5px;margin: auto; border:px solid red;
+}
 .card2{
- width:172px;
+ width:177px;
  border:1px solid rgb(202, 195, 195); height:250px;
+}
+.cardimg{
+   width:100%; height:70%;
 }
 .so{
   padding-left:7px; font-size:18px;
@@ -277,7 +292,7 @@ margin: auto;
   <!-- HEADER -->
   <div class="header">
      <span ><img src="WhatsApp Image 2025-12-09 at 15.22.30.jpeg" class="logo"> </span> 
-      <input type="text" id="searchBox" placeholder="Search..." onkeyup="searchProduct()">
+      <input type="text" id="searchBox" placeholder="SEARCH  PRODUCT" onkeyup="searchProduct()">
 
       
       <button class="icon-btn" id="menuToggle">
@@ -341,15 +356,15 @@ margin: auto;
  <div id="productBox" style= "width:97%; border:px solid red; display:flex; flex-wrap:wrap; gap:5px; margin: auto;"></div><br>
 
 
-<div class="product" style="width:97%; border:px solid red; display: flex; flex-wrap: wrap; gap:5px;margin: auto; ">
-  <a href="Updated product-details.html"><div class="card2"><img src="vivo.png" width="165px" height="70%"><br><br>   <span class="so">Vivo <br><span class="st">price:12,000 Tk</span> </span> </div></a>
-  <a href="profile.html">                <div class="card2"><img src="realme.png" width="165px" height="70%"><br><br> <span class="so"> Readmi <br><span class="st">price:15,000 Tk</span> </span> </div></a>
-  <a href="profileproduct.html">         <div class="card2"><img src="choclet2.png" width="165px" height="70%"><br><br><span class="so">Nike<br></span> <span class="st">price:2,000 Tk</span></div></a>
-  <a href="myproduct4.html">             <div class="card2"><img src="Nike4.png" width="165px" height="70%"><br><br><span class="so"> Nike 4c<br></span> <span class="st">price:2,000 Tk</span></div></a>
-  <a href="myproduct5.html">             <div class="card2"><img src="Full2.png" width="165px" height="70%"><br><br><span class="so">Sweatshirts <br></span>  <span class="st">price:700 Tk</span></div></a>
-  <a href="myproduct6.html">             <div class="card2"><img src="baby shoes2.jpg" width="165px" height="70%"><br><br><span class="so">Baby Shoes <br></span>  <span class="st">price:1000 Tk</span></div></a>
-  <a href="myproduct7.html">             <div class="card2"><img src="Hop3.png" width="165px" height="70%"><br><br><span class="so">ti Shart <br></span>  <span class="st">price:700 Tk</span></div></a>
-  <a href="myproduct8.html">             <div class="card2"><img src="ofwhate.png" width="165px" height="70%"><br><br><span class="so">Shart <br></span>  <span class="st">price:500 Tk</span></div></a>
+<div class="product">
+  <a href="Updated product-details.html"><div class="card2"><img src="vivo.png" class="cardimg"><br><br>   <span class="so">Vivo <br><span class="st">price:12,000 Tk</span> </span> </div></a>
+  <a href="profile.html">                <div class="card2"><img src="realme.png" class="cardimg"><br><br> <span class="so"> Readmi <br><span class="st">price:15,000 Tk</span> </span> </div></a>
+  <a href="profileproduct.html">         <div class="card2"><img src="choclet2.png" class="cardimg"><br><br><span class="so">Nike<br></span> <span class="st">price:2,000 Tk</span></div></a>
+  <a href="myproduct4.html">             <div class="card2"><img src="Nike4.png" class="cardimg" ><br><br><span class="so"> Nike 4c<br></span> <span class="st">price:2,000 Tk</span></div></a>
+  <a href="myproduct5.html">             <div class="card2"><img src="Full2.png" class="cardimg" ><br><br><span class="so">Sweatshirts <br></span>  <span class="st">price:700 Tk</span></div></a>
+  <a href="myproduct6.html">             <div class="card2"><img src="baby shoes2.jpg" class="cardimg" ><br><br><span class="so">Baby Shoes <br></span>  <span class="st">price:1000 Tk</span></div></a>
+  <a href="myproduct7.html">             <div class="card2"><img src="Hop3.png" class="cardimg" ><br><br><span class="so">ti Shart <br></span>  <span class="st">price:700 Tk</span></div></a>
+  <a href="myproduct8.html">             <div class="card2"><img src="ofwhate.png" class="cardimg" ><br><br><span class="so">Shart <br></span>  <span class="st">price:500 Tk</span></div></a>
 </div>
 <div class="nav">
  <a href="https://wa.me/8801319992654" target="_blank"> <div class="navone">Chat</div></a>
@@ -419,36 +434,7 @@ window.onload = function() {
     loadProducts();
 };
 </script>
-<script>
-function searchProduct() {
-    let input = document.getElementById('searchBox').value.toLowerCase();
-    const productCards = productBox.getElementsByClassName('card');
-    const slider = document.querySelector('.slideshow-container'); // slider element
 
-    let hasMatch = false; // কোন product match করেছে কিনা
-
-    for (let i = 0; i < productCards.length; i++) {
-        let productName = productCards[i].innerText.toLowerCase();
-        if (productName.includes(input)) {
-            productCards[i].style.display = "block";
-            hasMatch = true;
-        } else {
-            productCards[i].style.display = "none";
-        }
-    }
-
-    // যদি search খালি থাকে, সব products দেখাবে এবং slider দেখাবে
-    if (input === "") {
-        for (let i = 0; i < productCards.length; i++) {
-            productCards[i].style.display = "block";
-        }
-        slider.style.display = "block";
-    } else {
-        // search input দিলে slider hide হবে
-        slider.style.display = "none";
-    }
-}
-</script>
 
 <!-- আপনার অন্য script গুলো -->
 <script>
@@ -511,6 +497,5 @@ function searchProduct() {
 </html>
 
 
-</body>
-</html>
+
 
